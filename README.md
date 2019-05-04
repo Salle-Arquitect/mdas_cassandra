@@ -19,7 +19,7 @@ docker-compose up
 ## En modo silencioso
 docker-compose up -d
 ```
-3) Probar que funciona
+3) Una verz haya arrancado loguearse en la console
 
 ```
 docker-compose exec cassandra cqlsh
