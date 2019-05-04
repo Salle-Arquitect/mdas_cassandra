@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  cassandra:
+    image: cassandra:3.11
+    restart: always
+    volumes:
+      - cassandraData:/var/lib/cassandra
+      - ./dataset:/dataset/
+    ports:
+      - 7000:7000
+    networks:
+      - cassandranet
+volumes:
+  cassandraData:
+    driver: local
+networks:
+  cassandranet:
