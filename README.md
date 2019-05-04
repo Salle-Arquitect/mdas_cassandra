@@ -25,3 +25,10 @@ docker-compose up -d
 docker-compose exec cassandra cqlsh
 ```
 
+En el directorio dataset podeis poner los archivos que queréis importar a Cassandra.
+
+
+
+
+
+
