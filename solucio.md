@@ -36,14 +36,9 @@ CREATE TABLE IF NOT EXISTS room (
 	PRIMARY KEY (name)
 );
 
-CREATE TYPE IF NOT EXISTS attachment (
-	name text,
-	path text
-);
-
 CREATE TYPE IF NOT EXISTS content (
 	message text,
-	attachments List<FROZEN <attachment>>
+	attachments Map<text, text>
 );
 
 CREATE TABLE IF NOT EXISTS message (
@@ -115,7 +110,15 @@ BEGIN BATCH
 	INSERT INTO message (date, author, content, destinatary)
 	VALUES ('2017-04-01T11:21:59.001+0000', 'alice', {message: 'holis', attachments : []}, 'summer_party');
 
+	INSERT INTO
 
+
+CREATE TABLE IF NOT EXISTS  messages_not_read (
+	user text,
+	input text,
+	count counter,
+	PRIMARY KEY (user, input)
+);
 TODO, com combino cerques?
 	SELECT participants
 	FROM room
