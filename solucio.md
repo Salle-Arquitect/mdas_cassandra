@@ -46,7 +46,7 @@ CREATE TYPE IF NOT EXISTS content (
 	attachments List<FROZEN <attachment>>
 );
 
-CREATE TABLE IF NOT EXISTS messages (
+CREATE TABLE IF NOT EXISTS message (
 	date timestamp,
 	author text,
 	content FROZEN<content>,
@@ -101,10 +101,26 @@ SET participants = participants + {'alice', 'bob', 'james'}
 WHERE name = 'summer_party';
 ```
 
+```cassandra
+(?) TODO (?) SELECT alias FROM user ;
+UPDATE room
+SET participants = participants + {'tutu'}
+WHERE name = 'general'
+IF 'tutu' IN (SELECT alias FROM user);
+```
+
 # 4.4) Alice ha escrito 2 mensajes en **summer\_party**
 ```cassandra
 BEGIN BATCH
-	INSERT INTO
+	INSERT INTO message (date, author, content, destinatary)
+	VALUES ('2017-04-01T11:21:59.001+0000', 'alice', {message: 'holis', attachments : []}, 'summer_party');
+
+
+TODO, com combino cerques?
+	SELECT participants
+	FROM room
+	WHERE name = 'summer_party'
+
 	INSERT INTO messages_not_read (user, input)
 	VALUES ();
 APPLY BATCH
