@@ -1,9 +1,3 @@
-
-??? como interfiere la creación de un mensaje (?) TODO (?)
-> usuario ver cantidad de mensajes no leidos por chat y directos
-BATCH ???
-
-
 # 1) Crea una base de datos llamada “messaging\_system” que utilice la estrategia de replicación simple, con un factor de 1.
 <!---
 oo arquitectura cassandra, pagina 7 (18)
@@ -36,9 +30,14 @@ CREATE TABLE IF NOT EXISTS room (
 	PRIMARY KEY (name)
 );
 
+CREATE TYPE IF NOT EXISTS attachment (
+   name text,
+   path text
+);
+
 CREATE TYPE IF NOT EXISTS content (
 	message text,
-	attachments Map<text, text>
+	attachments SET<FROZEN <attachment>>
 );
 
 CREATE TABLE IF NOT EXISTS message (
