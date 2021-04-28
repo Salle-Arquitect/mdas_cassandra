@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS  messages_not_read (
 - Nombre real completo
 - Email
 - Edad
-Primary key alias, ya que solo queremos encontar la información en base su alias.
+Primary key alias, se pide en el enunciado esta tabla y necesita mínimo una primary key.
 
 ## Tenemos la tabl `room` con:
 - name
@@ -111,7 +111,7 @@ INSERT INTO user (alias, full_name, email, age)
 VALUES ('james', 'James Charles Dickinson', 'jcd@youtube.yt', 21);
 ```
 
-## 4.2) Crea las salas de chat **general** y **summer\_party**
+## 4.2) Crea las salas de chat `general` y `summer_party`
 ```cassandra
 INSERT INTO room (name, participants)
 VALUES ('general', {});
@@ -120,7 +120,7 @@ INSERT INTO room (name, participants)
 VALUES ('summer_party', {});
 ```
 
-## 4.3) Los usuarios Alice y Bob participan en la sala **general**, y los usuarios Alice, Bob y James participan en la sala **summer\_party**
+## 4.3) Los usuarios Alice y Bob participan en la sala `general`, y los usuarios Alice, Bob y James participan en la sala `summer_party`
 ```cassandra
 UPDATE room
 SET participants = participants + {'alice', 'bob'}
@@ -131,7 +131,7 @@ SET participants = participants + {'alice', 'bob', 'james'}
 WHERE name = 'summer_party';
 ```
 
-## 4.4) Alice ha escrito 2 mensajes en **summer\_party**
+## 4.4) Alice ha escrito 2 mensajes en `summer_party`
 ```cassandra
 -- Primer mensaje
 INSERT INTO message (date, author, content, destinatary)
